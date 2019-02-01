@@ -9,14 +9,27 @@ public class SimpleMerge {
         int[] n = new int[arr1.length + arr2.length];
         int x = 0;
         int y = 0;
-        for (int num = 0; num < ((arr1.length + arr2.length) - 1); num++) {
-            if (x < arr1.length + 1 || y < arr2.length + 1) {
-                if (arr1[x] > arr2[y]) {
+        for (int num = 0; num < n.length; num++) {
+            if (x >= (arr1.length + 1) || y >= (arr2.length + 1)) {
+                if (x >= arr1.length) {
                     n[num] = arr2[y];
-                    y++;
-                } else {
+                }
+                else {
                     n[num] = arr1[x];
-                    x++;
+                }
+            }
+            else {
+                if (arr1[x] < arr2[y]) {
+                    if (x < arr1.length) {
+                        n[num] = arr1[x];
+                        x++;
+                    }
+                }
+                else {
+                    if (y < arr2.length) {
+                        n[num] = arr1[x];
+                        x++;
+                    }
                 }
             }
         }
